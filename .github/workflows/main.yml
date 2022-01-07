@@ -12,4 +12,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Download OlivOS
         run: |
+          mkdir ./download
+          mkdir ./unpack
+          mkdir ./release
           curl -L https://github.com/OlivOS-Team/OlivOS/releases/latest/download/OlivOS-Win.zip -o ./download
+          mkdir ./unpack/OlivOS
+          unzip ./download/OlivOS-Win.zip -d ./unpack/OlivOS
+      - uses: actions/upload-artifact@v2
+        with:
+          name: OlivOS-Win
+          path: ./unpack/OlivOS
