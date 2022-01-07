@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download OlivOS
+        uses: aochmann/actions-download-artifact@1.0.4
+        with:
+          repo: OlivOS-Team/OlivOS
+          name: OlivOS-Win.zip
+          path: ./download
