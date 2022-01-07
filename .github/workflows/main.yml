@@ -21,7 +21,12 @@ jobs:
           curl -L https://github.com/OlivOS-Team/OlivaDiceLogger/releases/latest/download/OlivaDiceLogger.opk -o ./download/OlivaDiceLogger.opk
           mkdir ./unpack/OlivOS
           unzip ./download/OlivOS-Win.zip -d ./unpack/OlivOS
+          cp ./download/*.opk ./unpack/
+          cp -r ./unpack/OlivOS ./release/OlivOS
+          mkdir ./release/OlivOS/plugin
+          mkdir ./release/OlivOS/plugin/app
+          cp ./unpack/*.opk ./release/OlivOS/plugin/app
       - uses: actions/upload-artifact@v2
         with:
           name: OlivOS-Win
-          path: ./unpack/OlivOS
+          path: ./release/OlivOS
